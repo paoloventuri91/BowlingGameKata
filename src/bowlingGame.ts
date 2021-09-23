@@ -17,15 +17,11 @@ export class BowlingGame {
       if (frame.score.canIHaveBonus())
         score.addValue(bowlingRolls[index + 1].pins);
 
-      if (BowlingGame.isFrameComplete(frame.score, frame.rollCounter)) {
+      if (frame.isComplete()) {
         frame = new Frame();
       }
     }
 
     return score.value;
-  }
-
-  private static isFrameComplete(frameScore: Score, frameRollCounter: number) {
-    return frameScore.canIHaveBonus() || frameRollCounter == 2;
   }
 }

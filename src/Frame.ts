@@ -8,4 +8,8 @@ export class Frame {
     this.score = new Score();
     this.rollCounter = 0;
   }
+
+  isComplete() {
+    return this.score.canIHaveBonus() || this.rollCounter == 2;
+  }
 }
