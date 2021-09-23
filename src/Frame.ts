@@ -1,3 +1,4 @@
+import { BowlingRolls } from "./BowlingRolls";
 import { Roll } from "./Roll";
 import { Score } from "./Score";
 
@@ -21,5 +22,21 @@ export class Frame {
 
   isStrike() {
     return this.rollCounter == 1 && this.score.canIHaveBonus();
+  }
+
+  getScore(bowlingRolls: BowlingRolls): Score {
+    let score: Score = new Score();
+
+    if (this.score.canIHaveBonus()) score.addScore(this.getBonus(bowlingRolls));
+
+    score.addScore(this.score);
+
+    return score;
+  }
+
+  private getBonus(bowlingRolls: BowlingRolls): Score {
+    if (this.isStrike()) return bowlingRolls.getBonus(2);
+
+    return bowlingRolls.getBonus(1);
   }
 }

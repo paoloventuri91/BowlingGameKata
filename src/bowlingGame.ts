@@ -17,7 +17,7 @@ export class BowlingGame {
       frame.addRoll(roll);
 
       if (frame.isComplete()) {
-        score.addScore(BowlingGame.getFrameScore(frame, bowlingRolls));
+        score.addScore(frame.getScore(bowlingRolls));
 
         frames.push(frame);
         frame = new Frame();
@@ -25,25 +25,5 @@ export class BowlingGame {
     }
 
     return score.value;
-  }
-
-  private static getFrameScore(
-    frame: Frame,
-    bowlingRolls: BowlingRolls
-  ): Score {
-    let score: Score = new Score();
-
-    if (frame.score.canIHaveBonus())
-      score.addScore(BowlingGame.getBonus(frame, bowlingRolls));
-
-    score.addScore(frame.score);
-
-    return score;
-  }
-
-  private static getBonus(frame: Frame, bowlingRolls: BowlingRolls): Score {
-    if (frame.isStrike()) return bowlingRolls.getBonus(2);
-
-    return bowlingRolls.getBonus(1);
   }
 }
