@@ -35,3 +35,9 @@ test("All spare game should return 150", () => {
     ])
   ).toBe(150);
 });
+
+test("All strike game should return 300", () => {
+  expect(
+    BowlingGame.calculateScore([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
+  ).toBe(300);
+});
