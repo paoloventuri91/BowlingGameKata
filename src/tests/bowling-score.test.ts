@@ -19,3 +19,7 @@ test("All 1 rolls returns 20", () => {
     ])
   ).toBe(20);
 });
+
+test("A spare should return a bonus", () => {
+  expect(BowlingGame.calculateScore([6, 4, 1, 0])).toBe(12);
+});
