@@ -15,7 +15,7 @@ export class Frame {
   }
 
   addRoll(roll: Roll): void {
-    this.score.addValue(roll.pins);
+    this.score.addScore(new Score(roll.pins));
     this.rollCounter++;
   }
 

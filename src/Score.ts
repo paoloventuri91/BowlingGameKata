@@ -5,8 +5,8 @@ export class Score {
     this.value = value;
   }
 
-  addValue(value: number): void {
-    this.value += value;
+  addScore(score: Score): void {
+    this.value += score.value;
   }
 
   canIHaveBonus(): boolean {

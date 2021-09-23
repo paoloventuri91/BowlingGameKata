@@ -21,7 +21,7 @@ export class BowlingRolls {
     let bonus: Score = new Score();
 
     for (let index = 0; index < howMany; index++) {
-      bonus.addValue(this.rolls[this.index + index].pins);
+      bonus.addScore(new Score(this.rolls[this.index + index].pins));
     }
 
     return bonus;
