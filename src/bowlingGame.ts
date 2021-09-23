@@ -14,13 +14,19 @@ export class BowlingGame {
       frameScore.addValue(bowlingRolls[index].pins);
       frameRollCounter++;
 
-      if (frameScore.value == 10) score.addValue(bowlingRolls[index + 1].pins);
-      if (frameScore.value == 10 || frameRollCounter == 2) {
+      if (BowlingGame.isFrameScoreBonus(frameScore))
+        score.addValue(bowlingRolls[index + 1].pins);
+
+      if (BowlingGame.isFrameScoreBonus(frameScore) || frameRollCounter == 2) {
         frameScore = new Score();
         frameRollCounter = 0;
       }
     }
 
     return score.value;
+  }
+
+  private static isFrameScoreBonus(frameScore: Score): boolean {
+    return frameScore.value == 10;
   }
 }
