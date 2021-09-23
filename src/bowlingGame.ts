@@ -1,5 +1,5 @@
 export class BowlingGame {
   public static calculateScore(rolls: number[]): number {
-    return 0;
+    return rolls.pop();
   }
 }
