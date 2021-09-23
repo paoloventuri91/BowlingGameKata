@@ -19,8 +19,7 @@ export class BowlingGame {
       frame.addRoll(roll);
 
       if (frame.score.canIHaveBonus()) {
-        if (frame.rollCounter == 1)
-          score.addValue(bowlingRolls.getBonus(2).value);
+        if (frame.isStrike()) score.addValue(bowlingRolls.getBonus(2).value);
         else score.addValue(bowlingRolls.getBonus(1).value);
       }
 

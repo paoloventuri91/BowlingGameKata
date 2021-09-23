@@ -18,4 +18,8 @@ export class Frame {
     this.score.addValue(roll.pins);
     this.rollCounter++;
   }
+
+  isStrike() {
+    return this.rollCounter == 1 && this.score.canIHaveBonus();
+  }
 }
