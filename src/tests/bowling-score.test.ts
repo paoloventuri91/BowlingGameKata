@@ -27,3 +27,11 @@ test("A spare should return a bonus", () => {
 test("A strike should return a double bonus", () => {
   expect(BowlingGame.calculateScore([10, 1, 3])).toBe(18);
 });
+
+test("All spare game should return 150", () => {
+  expect(
+    BowlingGame.calculateScore([
+      5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    ])
+  ).toBe(150);
+});
