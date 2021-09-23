@@ -1,7 +1,7 @@
 export class Score {
   value: number;
 
-  constructor(value: number) {
+  constructor(value: number = 0) {
     this.value = value;
   }
 
