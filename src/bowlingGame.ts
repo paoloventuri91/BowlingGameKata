@@ -9,10 +9,11 @@ export class BowlingGame {
       rolls.map((roll) => new Roll(roll))
     );
 
+    let frames: Frame[] = [];
     let score: Score = new Score();
     let frame: Frame = new Frame();
 
-    while (bowlingRolls.canTakeARoll()) {
+    while (bowlingRolls.canTakeARoll() && frames.length <= 9) {
       let roll: Roll = bowlingRolls.takeARoll();
 
       score.addScore(new Score(roll.pins));
@@ -21,7 +22,10 @@ export class BowlingGame {
       if (frame.score.canIHaveBonus())
         score.addScore(BowlingGame.getBonus(frame, bowlingRolls));
 
-      if (frame.isComplete()) frame = new Frame();
+      if (frame.isComplete()) {
+        frames.push(frame);
+        frame = new Frame();
+      }
     }
 
     return score.value;
