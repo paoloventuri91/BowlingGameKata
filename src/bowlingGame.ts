@@ -14,19 +14,31 @@ export class BowlingGame {
     while (bowlingRolls.canTakeARoll() && frames.length <= 9) {
       let roll: Roll = bowlingRolls.takeARoll();
 
-      score.addScore(new Score(roll.pins));
       frame.addRoll(roll);
 
-      if (frame.score.canIHaveBonus())
-        score.addScore(BowlingGame.getBonus(frame, bowlingRolls));
-
       if (frame.isComplete()) {
+        score.addScore(BowlingGame.getFrameScore(frame, bowlingRolls));
+
         frames.push(frame);
         frame = new Frame();
       }
     }
 
     return score.value;
+  }
+
+  private static getFrameScore(
+    frame: Frame,
+    bowlingRolls: BowlingRolls
+  ): Score {
+    let score: Score = new Score();
+
+    if (frame.score.canIHaveBonus())
+      score.addScore(BowlingGame.getBonus(frame, bowlingRolls));
+
+    score.addScore(frame.score);
+
+    return score;
   }
 
   private static getBonus(frame: Frame, bowlingRolls: BowlingRolls): Score {
