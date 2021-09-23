@@ -5,9 +5,7 @@ import { Score } from "./Score";
 
 export class BowlingGame {
   public static calculateScore(rolls: number[]): number {
-    let bowlingRolls: BowlingRolls = new BowlingRolls(
-      rolls.map((roll) => new Roll(roll))
-    );
+    let bowlingRolls: BowlingRolls = new BowlingRolls(rolls);
 
     let frames: Frame[] = [];
     let score: Score = new Score();

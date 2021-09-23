@@ -5,8 +5,8 @@ export class BowlingRolls {
   rolls: Roll[];
   index: number;
 
-  constructor(rolls: Roll[]) {
-    this.rolls = rolls;
+  constructor(rolls: number[]) {
+    this.rolls = rolls.map((roll) => new Roll(roll));
     this.index = 0;
   }
 
