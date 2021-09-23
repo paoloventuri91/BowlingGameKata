@@ -1,3 +1,4 @@
+import { Score } from "./Score";
 import { Roll } from "./Roll";
 
 export class BowlingRolls {
@@ -16,8 +17,14 @@ export class BowlingRolls {
     return roll;
   }
 
-  getNext(): Roll {
-    return this.rolls[this.index];
+  getBonus(howMany: number): Score {
+    let bonus: Score = new Score();
+
+    for (let index = 0; index < howMany; index++) {
+      bonus.addValue(this.rolls[this.index + index].pins);
+    }
+
+    return bonus;
   }
 
   canTakeARoll(): boolean {
