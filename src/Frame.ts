@@ -5,8 +5,10 @@ import { Score } from "./Score";
 export class Frame {
   score: Score;
   rollCounter: number;
+  bowlingRolls: BowlingRolls;
 
-  constructor() {
+  constructor(bowlingRolls: BowlingRolls) {
+    this.bowlingRolls = bowlingRolls;
     this.score = new Score();
     this.rollCounter = 0;
   }
@@ -24,19 +26,19 @@ export class Frame {
     return this.rollCounter == 1 && this.score.canIHaveBonus();
   }
 
-  getScore(bowlingRolls: BowlingRolls): Score {
+  getScore(): Score {
     let score: Score = new Score();
 
-    if (this.score.canIHaveBonus()) score.addScore(this.getBonus(bowlingRolls));
+    if (this.score.canIHaveBonus()) score.addScore(this.getBonus());
 
     score.addScore(this.score);
 
     return score;
   }
 
-  private getBonus(bowlingRolls: BowlingRolls): Score {
-    if (this.isStrike()) return bowlingRolls.getBonus(2);
+  private getBonus(): Score {
+    if (this.isStrike()) return this.bowlingRolls.getBonus(2);
 
-    return bowlingRolls.getBonus(1);
+    return this.bowlingRolls.getBonus(1);
   }
 }

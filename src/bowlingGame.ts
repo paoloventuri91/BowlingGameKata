@@ -9,7 +9,7 @@ export class BowlingGame {
 
     let frames: Frame[] = [];
     let score: Score = new Score();
-    let frame: Frame = new Frame();
+    let frame: Frame = new Frame(bowlingRolls);
 
     while (bowlingRolls.canTakeARoll() && frames.length <= 9) {
       let roll: Roll = bowlingRolls.takeARoll();
@@ -17,10 +17,10 @@ export class BowlingGame {
       frame.addRoll(roll);
 
       if (frame.isComplete()) {
-        score.addScore(frame.getScore(bowlingRolls));
+        score.addScore(frame.getScore());
 
         frames.push(frame);
-        frame = new Frame();
+        frame = new Frame(bowlingRolls);
       }
     }
 
