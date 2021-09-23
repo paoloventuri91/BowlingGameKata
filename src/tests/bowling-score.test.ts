@@ -11,3 +11,11 @@ test("A roll by 1 returns 1", () => {
 test("A roll by 1 and 1 returns 2", () => {
   expect(BowlingGame.calculateScore([1, 1])).toBe(2);
 });
+
+test("All 1 rolls returns 20", () => {
+  expect(
+    BowlingGame.calculateScore([
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    ])
+  ).toBe(20);
+});
