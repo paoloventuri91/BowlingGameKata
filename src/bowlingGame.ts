@@ -14,7 +14,7 @@ export class BowlingGame {
       frameScore.addValue(bowlingRolls[index].pins);
       frameRollCounter++;
 
-      if (BowlingGame.isFrameScoreBonus(frameScore))
+      if (frameScore.canIHaveBonus())
         score.addValue(bowlingRolls[index + 1].pins);
 
       if (BowlingGame.isFrameComplete(frameScore, frameRollCounter)) {
@@ -27,10 +27,6 @@ export class BowlingGame {
   }
 
   private static isFrameComplete(frameScore: Score, frameRollCounter: number) {
-    return BowlingGame.isFrameScoreBonus(frameScore) || frameRollCounter == 2;
-  }
-
-  private static isFrameScoreBonus(frameScore: Score): boolean {
-    return frameScore.value == 10;
+    return frameScore.canIHaveBonus() || frameRollCounter == 2;
   }
 }
