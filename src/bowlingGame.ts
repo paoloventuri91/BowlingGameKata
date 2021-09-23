@@ -11,8 +11,8 @@ export class BowlingGame {
 
     for (let index = 0; index < bowlingRolls.length; index++) {
       score.addValue(bowlingRolls[index].pins);
-      frame.score.addValue(bowlingRolls[index].pins);
-      frame.rollCounter++;
+
+      frame.addRoll(bowlingRolls[index]);
 
       if (frame.score.canIHaveBonus())
         score.addValue(bowlingRolls[index + 1].pins);

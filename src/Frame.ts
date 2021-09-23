@@ -1,3 +1,4 @@
+import { Roll } from "./Roll";
 import { Score } from "./Score";
 
 export class Frame {
@@ -9,7 +10,12 @@ export class Frame {
     this.rollCounter = 0;
   }
 
-  isComplete() {
+  isComplete(): boolean {
     return this.score.canIHaveBonus() || this.rollCounter == 2;
+  }
+
+  addRoll(roll: Roll): void {
+    this.score.addValue(roll.pins);
+    this.rollCounter++;
   }
 }
